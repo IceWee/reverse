@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<!-- 数据库类型与hibernate类型映射 -->
+	<type-mapping>
+		<sql-type jdbc-type="VARCHAR" hibernate-type="string" />
+	</type-mapping>
+
+	<!-- 逆向工程表配置 -->
+	<table-filter match-name="CRM_COUPON_SCRAMBLE" match-catalog="CRM_RETAIL_DEV" match-schema="dbo" />
+	<table-filter match-name="CRM_COUPON_SCRAMBLE_TIMESPAN" match-catalog="CRM_RETAIL_DEV" match-schema="dbo" />
+	<table-filter match-name="CRM_COUPON_SCRAMBLE_DETAILS" match-catalog="CRM_RETAIL_DEV" match-schema="dbo" />
+	<table-filter match-name="CRM_COUPON_USER_SCRAMBLE_LOG" match-catalog="CRM_RETAIL_DEV" match-schema="dbo" />
+	<table-filter match-name="CRM_COUPON_SCRAMBLE_USERTIP" match-catalog="CRM_RETAIL_DEV" match-schema="dbo" />
+	<table-filter match-name="CRM_COUPON_SCRAMBLE_TIPLOG" match-catalog="CRM_RETAIL_DEV" match-schema="dbo" />
+</hibernate-reverse-engineering>

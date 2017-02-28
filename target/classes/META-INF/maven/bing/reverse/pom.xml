@@ -1,0 +1,80 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>bing</groupId>
+	<artifactId>reverse</artifactId>
+	<version>1.0</version>
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>src</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.0</version>
+				<configuration>
+					<source />
+					<target />
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>hibernate3-maven-plugin</artifactId>
+				<version>2.2</version>
+				<dependencies>
+					<!-- 数据库驱动 -->
+					<dependency>
+						<groupId>net.sourceforge.jtds</groupId>
+						<artifactId>jtds</artifactId>
+						<version>1.3.1</version>
+					</dependency>
+					<dependency>
+						<groupId>cglib</groupId>
+						<artifactId>cglib</artifactId>
+						<version>3.2.4</version>
+					</dependency>
+					<dependency>
+						<groupId>org.hibernate</groupId>
+						<artifactId>ejb3-persistence</artifactId>
+						<version>3.3.2.Beta1</version>
+					</dependency>
+				</dependencies>
+				<!-- 运行命令： mvn hibernate3:hbm2java hibernate3:hbm2hbmxml -->
+				<configuration>
+					<components>
+						<!-- 映射文件夹 项目目录下运行命令：mvn hibernate3:hbm2hbmxml -->
+						<component>
+							<name>hbm2hbmxml</name>
+							<implementation>jdbcconfiguration</implementation>
+							<outputDirectory>src/</outputDirectory>
+						</component>
+						<!-- 实体类 项目目录下运行命令：mvn hibernate3:hbm2java -->
+						<component>
+							<name>hbm2java</name>
+							<outputDirectory>src/</outputDirectory>
+							<implementation>jdbcconfiguration</implementation>
+						</component>
+					</components>
+
+					<componentProperties>
+						<revengfile>src/hibernate.reveng.xml</revengfile> <!-- 生成指定表名的实体类和映射文件（不配置则生成所有的数据表） -->
+						<configurationfile>src/hibernate.cfg.xml</configurationfile><!-- hibernate总配置文件，注意是链接数据库的信息 -->
+						<packagename>com.winchannel.couponscramble.model</packagename> <!-- 输出的包名 -->
+						<ejb3>false</ejb3> <!-- true为注解实体类方式，只需要生成java类即可，false为映射文件和非注解java实体类，结合 -->
+					</componentProperties>
+
+					<!-- 1、如果生成注解方式的 java文件，就运行 mvn hibernate3:hbm2java 2、如果你要生成 hbm.xml 
+						配合 java 的形式就先把 pom 里面 <ejb3>false</ejb3> 改成false 然后分别运行 mvn hibernate3:hbm2hbmxml 
+						和 mvn hibernate3:hbm2java 
+					-->
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
