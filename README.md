@@ -25,4 +25,4 @@ mvn hibernate3:hbm2hbmxml hibernate3:hbm2java
 ```
 
 ## 版权
->MIT © 2017 `IceWee`
+>MIT © 2017 `IceWee` `Bing` `长公子冰`
